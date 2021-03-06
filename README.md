@@ -1,10 +1,12 @@
-# RegionTriggerV2 for TShock
+# RegionTrigger for TShock
 
 RegionTrigger is a **TShock-based** plugin aimed to trigger special events when players enter a region.
 
+> 本插件有中文版本! 查看[中文教程][cn].. [下载链接][cndown]..
+
 ## Requirement:
-- API Version: 2.1
-- TShock Version: 4.4.0
+- API Version: 2.0
+- TShock Version: 4.3.22
 
 ## Commands:
 - `/rt set-<property> <region> [--del] <value>` -- *Sets regions*
@@ -20,6 +22,8 @@ RegionTrigger is a **TShock-based** plugin aimed to trigger special events when 
 - `/rt show <region>` -- *Gets information about a specific region*
 - `/rt reload` -- *Reloads data in database*
 - `/rt --help [page]` -- *Gets helps*
+
+You can also find this plugin in [TShock offical forum][tshockco].
 
 ## Permission
 - `regiontrigger.manage` -- *Manages regions' events.*
@@ -46,3 +50,7 @@ RegionTrigger is a **TShock-based** plugin aimed to trigger special events when 
 - `NoPvp` - *Disallows players from enabling their PvP mode.*
 - `InvariantPvp` - *Disallows players from changing their pvp mode.*
 - `Private` - *Disallows players without permission from entering region.*
+
+   [tshockco]: <https://tshock.co/xf/index.php?resources/regiontrigger.157/>
+   [cn]: <https://github.com/mistzzt/RegionTrigger/blob/cn/README.md>
+   [cndown]: <https://github.com/mistzzt/RegionTrigger/releases>

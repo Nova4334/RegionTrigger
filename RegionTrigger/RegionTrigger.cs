@@ -18,9 +18,9 @@ namespace RegionTrigger
 	{
 		internal RtRegionManager RtRegions;
 
-		public override string Name => "RegionTrigger";
+		public override string Name => "RegionTriggerV2";
 
-		public override string Author => "MistZZT";
+		public override string Author => "MistZZT, Rewrite by Nova4334";
 
 		public override Version Version => GetType().Assembly.GetName().Version;
 
@@ -66,7 +66,10 @@ namespace RegionTrigger
 
 		private void OnInitialize(EventArgs args)
 		{
-			Commands.ChatCommands.Add(new Command("regiontrigger.manage", RegionSetProperties, "rt"));
+			Commands.ChatCommands.Add(new Command(
+				"regiontrigger.manage", 
+				RegionSetProperties, 
+				"rt"));
 
 			RtRegions = new RtRegionManager(TShock.DB);
 		}
@@ -179,21 +182,23 @@ namespace RegionTrigger
 
 			if (rt?.HasEvent(Event.Itemban) != true)
 				return;
-
-			BitsByte control = args.Control;
-			if (control[5])
+			string itemName1 = ply.SelectedItem.Name;
+			
+			if (rt.ItemIsBanned(itemName1) && !ply.HasPermission("regiontrigger.bypass.itemban"))
 			{
-				var itemName = ply.TPlayer.inventory[args.Item].Name;
-				if (rt.ItemIsBanned(itemName) && !ply.HasPermission("regiontrigger.bypass.itemban"))
+				ply.Disable($"using a banned item ({itemName1})", DisableFlags.WriteToLogAndConsole);
+                ply.SendErrorMessage($"You can't use {itemName1} here.");
+			}
+			foreach (var item in ply.TPlayer.armor)
+			{
+				string itemName2 = item.Name;
+				if (rt.ItemIsBanned(itemName2) && !ply.HasPermission("regiontrigger.bypass.itemban"))
 				{
-					control[5] = false;
-					args.Control = control;
-					ply.Disable($"using a banned item ({itemName})", DisableFlags.WriteToLogAndConsole);
-					ply.SendErrorMessage($"You can't use {itemName} here.");
+					ply.Disable($"equiped a banned item ({itemName2})", DisableFlags.WriteToLogAndConsole);
+                    ply.SendErrorMessage($"You can't use {itemName2} here.");
 				}
 			}
 		}
-
 		private void OnRegionDeleted(RegionHooks.RegionDeletedEventArgs args)
 		{
 			RtRegions.DeleteRtRegion(args.Region.ID);
@@ -207,7 +212,7 @@ namespace RegionTrigger
 				return;
 
 			if (rt.HasPermission(args.Permission) && !args.Player.HasPermission("regiontrigger.bypass.tempperm"))
-				args.Handled = true;
+				args.Result = PermissionHookResult.Denied;
 		}
 
 		private static void OnRegionLeft(TSPlayer player, RtRegion region, RtPlayer data)
@@ -311,7 +316,7 @@ namespace RegionTrigger
 
 			if (rt.HasEvent(Event.Private) && !player.HasPermission("regiontrigger.bypass.private"))
 			{
-				player.Spawn();
+				player.Spawn(0);
 				player.SendErrorMessage("You don't have permission to enter that region.");
 			}
 		}
@@ -469,7 +474,7 @@ namespace RegionTrigger
 							}
 							else if (items.Count > 1)
 							{
-								TShock.Utils.SendMultipleMatchError(args.Player, items.Select(i => i.Name));
+								args.Player.SendMultipleMatchError(items.Select(i => i.Name));
 							}
 							else
 							{

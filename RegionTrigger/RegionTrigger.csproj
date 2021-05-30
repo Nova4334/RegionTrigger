@@ -32,22 +32,22 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Data.Sqlite">
-      <HintPath>..\..\..\..\OneDrive\Documenten\TShock4.4.0_Pre15_Terraria1.4.1.2\TShock4.4.0_Pre15_Terraria1.4.1.2\Mono.Data.Sqlite.dll</HintPath>
+      <HintPath>..\..\..\assembly\TShock.4.5.2.Terraria.1.4.2.2a\Mono.Data.Sqlite.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\OneDrive\Documenten\TShock4.4.0_Pre15_Terraria1.4.1.2\TShock4.4.0_Pre15_Terraria1.4.1.2\MySql.Data.dll</HintPath>
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\..\assembly\TShock.4.5.2.Terraria.1.4.2.2a\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="OTAPI">
-      <HintPath>..\..\..\..\OneDrive\Documenten\TShock4.4.0_Pre15_Terraria1.4.1.2\TShock4.4.0_Pre15_Terraria1.4.1.2\OTAPI.dll</HintPath>
+      <HintPath>..\..\..\assembly\TShock.4.5.2.Terraria.1.4.2.2a\OTAPI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="TerrariaServer">
-      <HintPath>..\..\..\..\OneDrive\Documenten\TShock4.4.0_Pre15_Terraria1.4.1.2\TShock4.4.0_Pre15_Terraria1.4.1.2\TerrariaServer.exe</HintPath>
+      <HintPath>..\..\..\assembly\TShock.4.5.2.Terraria.1.4.2.2a\TerrariaServer.exe</HintPath>
     </Reference>
     <Reference Include="TShockAPI">
-      <HintPath>..\..\..\..\OneDrive\Documenten\TShock4.4.0_Pre15_Terraria1.4.1.2\TShock4.4.0_Pre15_Terraria1.4.1.2\ServerPlugins\TShockAPI.dll</HintPath>
+      <HintPath>..\..\..\assembly\TShock.4.5.2.Terraria.1.4.2.2a\ServerPlugins\TShockAPI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
